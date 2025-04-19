@@ -178,10 +178,10 @@ class SnipOCRApp(QWidget):
         model_path = str(save_dir / "got_ocr_model")
         #print(torch.cuda.is_available())
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        # model = AutoModelForImageTextToText.from_pretrained("stepfun-ai/GOT-OCR-2.0-hf", device_map=device)
-        # processor = AutoProcessor.from_pretrained("stepfun-ai/GOT-OCR-2.0-hf")
-        self.model = AutoModelForImageTextToText.from_pretrained(model_path, device_map=self.device)
-        self.processor = AutoProcessor.from_pretrained(model_path)
+        self.model = AutoModelForImageTextToText.from_pretrained("stepfun-ai/GOT-OCR-2.0-hf", device_map=device) #use for online mode
+        self.processor = AutoProcessor.from_pretrained("stepfun-ai/GOT-OCR-2.0-hf")
+        #self.model = AutoModelForImageTextToText.from_pretrained(model_path, device_map=self.device) #use for offline mode after saving model in got_ocr_model folder
+        #self.processor = AutoProcessor.from_pretrained(model_path)
         
 
 
